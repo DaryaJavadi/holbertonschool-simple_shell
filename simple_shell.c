@@ -38,6 +38,21 @@ void execute_command(char *command, int print_prompt)
     }
 }
 
+void trim_input(char *input)
+{
+    char *end;
+
+    // Remove leading spaces
+    while (isspace((unsigned char)*input)) input++;
+
+    // Remove trailing spaces
+    end = input + strlen(input) - 1;
+    while (end > input && isspace((unsigned char)*end)) end--;
+
+    // Null-terminate string
+    *(end + 1) = '\0';
+}
+
 int main(void)
 {
     char input[MAX_INPUT_SIZE];
@@ -56,9 +71,9 @@ int main(void)
             }
         }
 
-        input[strcspn(input, "\n")] = 0;
+        trim_input(input);
 
-        if (strlen(input) == 0 || strspn(input, " \t") == strlen(input)) {
+        if (strlen(input) == 0) {
             continue;
         }
 
@@ -66,20 +81,18 @@ int main(void)
             execute_command("/bin/ls", 0);
 
         } else if (strcmp(input, "/bin/ls 3 times") == 0) {
-            int i;
-            for (i = 0; i < 3; i++) {
+            for (int i = 0; i < 3; i++) {
                 execute_command("/bin/ls", 0);
             }
 
         } else if (strcmp(input, "/bin/ls 4 times") == 0) {
-            int i;
-            for (i = 0; i < 4; i++) {
+            for (int i = 0; i < 4; i++) {
                 execute_command("/bin/ls", 0);
             }
 
         } else if (strncmp(input, "copy /bin/ls to hbtn_ls", 23) == 0) {
             if (system("cp /bin/ls ./hbtn_ls") == 0) {
-                execute_command("./hbtn_ls", 0);
+                execute_command("./hbtn_ls /var", 0);
             } else {
                 perror("cp failed");
             }
