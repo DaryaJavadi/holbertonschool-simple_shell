@@ -49,6 +49,7 @@ void trim_input(char *input)
 int main(void)
 {
     char input[MAX_INPUT_SIZE];
+    int i;
 
     while (1) {
         printf("#cisfun$ ");
@@ -74,12 +75,12 @@ int main(void)
             execute_command("/bin/ls");
 
         } else if (strcmp(input, "/bin/ls 3 times") == 0) {
-            for (int i = 0; i < 3; i++) {
+            for (i = 0; i < 3; i++) {
                 execute_command("/bin/ls");
             }
 
         } else if (strcmp(input, "/bin/ls 4 times") == 0) {
-            for (int i = 0; i < 4; i++) {
+            for (i = 0; i < 4; i++) {
                 execute_command("/bin/ls");
             }
 
