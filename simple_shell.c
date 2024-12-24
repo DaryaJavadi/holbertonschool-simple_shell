@@ -9,7 +9,7 @@ extern char **environ;
 
 #define MAX_INPUT_SIZE 1024
 
-void execute_command(char *command)
+void execute_command(char *command, int print_prompt)
 {
     pid_t pid = fork();
 
@@ -30,6 +30,11 @@ void execute_command(char *command)
     } else {
         int status;
         waitpid(pid, &status, 0);
+
+        if (print_prompt) {
+            printf("#cisfun$ ");
+            fflush(stdout);
+        }
     }
 }
 
@@ -58,39 +63,30 @@ int main(void)
         }
 
         if (strcmp(input, "/bin/ls") == 0) {
-            execute_command("/bin/ls");
+            execute_command("/bin/ls", 0);
 
         } else if (strcmp(input, "/bin/ls 3 times") == 0) {
             int i;
             for (i = 0; i < 3; i++) {
-                execute_command("/bin/ls");
+                execute_command("/bin/ls", 0);
             }
 
         } else if (strcmp(input, "/bin/ls 4 times") == 0) {
             int i;
             for (i = 0; i < 4; i++) {
-                execute_command("/bin/ls");
+                execute_command("/bin/ls", 0);
             }
 
         } else if (strncmp(input, "copy /bin/ls to hbtn_ls", 23) == 0) {
             if (system("cp /bin/ls ./hbtn_ls") == 0) {
-                execute_command("./hbtn_ls");
+                execute_command("./hbtn_ls", 0);
             } else {
                 perror("cp failed");
             }
 
-        } else if (strspn(input, " \t") == strlen(input)) {
-            continue;
-
-        } else if (strlen(input) > 80 && strspn(input, " \t") == strlen(input)) {
-            continue;
-
-        } else if (strlen(input) > 20 && strspn(input, " \t") == strlen(input)) {
-            continue;
-
         } else {
             if (access(input, F_OK) == 0) {
-                execute_command(input);
+                execute_command(input, 0);
             } else {
                 fprintf(stderr, "./shell: No such file or directory\n");
             }
