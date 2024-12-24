@@ -19,11 +19,12 @@ void execute_command(char *command)
 
 	if (pid == 0)
 	{
-		if (execve(command, (char *[]) {command, NULL}, environ) == -1)
-		{	
-			perror("./shell");
-			exit(EXIT_FAILURE);
-		}
+	char *args[] = {command, NULL};
+        if (execve(command, args, environ) == -1)
+	{
+		perror("./shell");
+		exit(EXIT_FAILURE);
+        }
 	}
 	else
 	{
