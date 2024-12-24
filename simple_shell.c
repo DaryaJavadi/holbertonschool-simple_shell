@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <ctype.h>
 
 extern char **environ;
 
@@ -42,14 +43,11 @@ void trim_input(char *input)
 {
     char *end;
 
-    // Remove leading spaces
     while (isspace((unsigned char)*input)) input++;
 
-    // Remove trailing spaces
     end = input + strlen(input) - 1;
     while (end > input && isspace((unsigned char)*end)) end--;
 
-    // Null-terminate string
     *(end + 1) = '\0';
 }
 
