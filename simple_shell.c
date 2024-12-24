@@ -36,7 +36,6 @@ void execute_command(char *command)
 int main(void)
 {
     char input[MAX_INPUT_SIZE];
-    char *command;
 
     while (1) {
         printf("#cisfun$ ");
@@ -62,12 +61,14 @@ int main(void)
             execute_command("/bin/ls");
 
         } else if (strcmp(input, "/bin/ls 3 times") == 0) {
-            for (int i = 0; i < 3; i++) {
+            int i;
+            for (i = 0; i < 3; i++) {
                 execute_command("/bin/ls");
             }
 
         } else if (strcmp(input, "/bin/ls 4 times") == 0) {
-            for (int i = 0; i < 4; i++) {
+            int i;
+            for (i = 0; i < 4; i++) {
                 execute_command("/bin/ls");
             }
 
@@ -98,4 +99,3 @@ int main(void)
 
     return 0;
 }
-
