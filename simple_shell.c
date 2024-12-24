@@ -66,18 +66,20 @@ int main(void)
             execute_command("/bin/ls", 0);
 
         } else if (strcmp(input, "/bin/ls 3 times") == 0) {
-            for (int i = 0; i < 3; i++) {
+            int i;
+            for (i = 0; i < 3; i++) {
                 execute_command("/bin/ls", 0);
             }
 
         } else if (strcmp(input, "/bin/ls 4 times") == 0) {
-            for (int i = 0; i < 4; i++) {
+            int i;
+            for (i = 0; i < 4; i++) {
                 execute_command("/bin/ls", 0);
             }
 
         } else if (strncmp(input, "copy /bin/ls to hbtn_ls", 23) == 0) {
             if (system("cp /bin/ls ./hbtn_ls") == 0) {
-                execute_command("./hbtn_ls /var", 0);
+                execute_command("./hbtn_ls", 0);
             } else {
                 perror("cp failed");
             }
