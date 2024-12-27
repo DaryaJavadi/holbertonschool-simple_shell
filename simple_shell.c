@@ -11,6 +11,7 @@
 
 /**
  * get_path - returns the PATH
+ *
  * Return: the path
  */
 char *get_path(void)
@@ -37,6 +38,7 @@ char *get_path(void)
  * get_full_path - finds the full path of given command
  * @arg: the given argumnet
  * @status: variable for the exit status
+ *
  * Return: full path os the given command
  */
 char *get_full_path(char *arg, int *status)
@@ -108,6 +110,7 @@ void set_argv(char *buffer, char ***argv)
  * execute - executes the given program
  * @argv: argument vector
  * @status: variable for exit status
+ *
  */
 void execute(char **argv, int *status)
 {
@@ -121,26 +124,16 @@ void execute(char **argv, int *status)
 		return;
 	pid = fork();
 	if (pid == 0)
-	{
-		if (execve(command, argv, environ) == -1)
-		{
-			perror("Error")
-			exit(EXIT_FAILURE);
-		}
-	}
-	else if (pid > 0)
-	{
-		wait(NULL);
-		free(command);
-	}
+		execve(command, argv, environ);
 	else
 	{
-		perror("Fork failed");
+		wait(NULL);
 		free(command);
 	}
 }
 /**
  * main - the main function
+ *
  * Return: exit status
  */
 int main(void)

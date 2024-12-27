@@ -5,11 +5,11 @@ SIMPLE SHELL
 
 DESCRIPTION
 
-	The shell is a simple command line interperter that executes the command based on user input. The shell does not take any arguments a the time of execution.
+	Simple shell is a simple command line interperter that executes the command based on user input. The shell does not take any arguments a the time of execution.
 
 OVERVIEW
 
-	The shell prints a prompt to the user, representing that it is ready to accept user input. Commands are read from stdin, so commands that are piped into the shell at execution are also read. commands are processed in the order they are received.
+	Simple shell prints a prompt to the user, representing that it is ready to accept user input. Commands are read from stdin, so commands that are piped into the shell at execution are also read. commands are processed in the order they are received.
 
 COMMAND FORMAT
 
@@ -40,7 +40,7 @@ EXECUTION
 
 	If executable is found, the shell forks into a child process where the command is executable following any arguments. The shell returns the output of the given command and it terminates the child process while the parent process waits for the child process to be terminated.
 
-	Shell will re-prompt a new line waiting for the next user input.
+	Simple shell will re-prompt a new line waiting for the next user input.
 
 BUGS
 	If a command fails the shell may exit with status 0 when status 2 should be expected
