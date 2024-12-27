@@ -121,10 +121,21 @@ void execute(char **argv, int *status)
 		return;
 	pid = fork();
 	if (pid == 0)
-		execve(command, argv, environ);
-	else
+	{
+		if (execve(command, argv, environ) == -1)
+		{
+			perror("Error")
+			exit(EXIT_FAILURE);
+		}
+	}
+	else if (pid > 0)
 	{
 		wait(NULL);
+		free(command);
+	}
+	else
+	{
+		perror("Fork failed");
 		free(command);
 	}
 }
