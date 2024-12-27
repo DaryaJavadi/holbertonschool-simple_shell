@@ -1,5 +1,5 @@
 # Simple Shell Project
-![Holberton school logo](https://secure.meetupstatic.com/photos/event/b/c/5/6/highres_475548214.jpeg)
+![Holberton school logo](https://i.pinimg.com/originals/c5/a6/d4/c5a6d4a0d33151ac29bfe66d2cfd4ab1.png)
 
 ## Description
 The Simple Shell project is an implementation of a basic Unix command. This shell allows users to execute commands, navigate the file system, and run programs in both interactive and non-interactive modes.
