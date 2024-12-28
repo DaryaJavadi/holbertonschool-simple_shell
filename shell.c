@@ -28,11 +28,6 @@ char *get_path(void)
 			path = *env + 5;
 			return (path);
 		}
-		if (strncmp(*env, "PATH1=", 6) == 0)
-		{
-			path = *env + 6;
-			return (path);
-		}
 		env++;
 	}
 	return (NULL);
@@ -60,11 +55,10 @@ char *get_full_path(char *arg, int *status)
 	}
 	if (get_path() == NULL)
 	{
-		fprintf(stderr, "./hsh: 1: %s: not found (No PATH or PATH1 set)\n", arg);
+		fprintf(stderr, "./hsh: 1: %s: not found\n", arg);
 		*status = 127;
 		return (NULL);
 	}
-
 	PATH = strdup(get_path());
 	dir = strtok(PATH, ":");
 	while (dir)
