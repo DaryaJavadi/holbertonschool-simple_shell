@@ -59,7 +59,15 @@ char *get_full_path(char *arg, int *status)
 		*status = 127;
 		return (NULL);
 	}
+	PATH1 = getenv("PATH1");
+	if (PATH1 == NULL)
+	{
+	fprintf(stderr, "./hsh: 1: %s: not found\n", arg);
+	*status = 127;
+	return (NULL);
+    }
 	PATH = strdup(get_path());
+	dir = strtok(PATH1, ":");
 	dir = strtok(PATH, ":");
 	while (dir)
 	{
