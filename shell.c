@@ -60,7 +60,7 @@ char *get_full_path(char *arg, int *status)
 	}
 	if (get_path() == NULL)
 	{
-		fprintf(stderr, "./hsh: 1: %s: not found\n", arg);
+		fprintf(stderr, "./hsh: 1: %s: not found (No PATH or PATH1 set)\n", arg);
 		*status = 127;
 		return (NULL);
 	}
