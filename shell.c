@@ -28,6 +28,11 @@ char *get_path(void)
 			path = *env + 5;
 			return (path);
 		}
+		if (strncmp(*env, "PATH1=", 6) == 0)
+		{
+			path = *env + 6;
+			return (path);
+		}
 		env++;
 	}
 	return (NULL);
