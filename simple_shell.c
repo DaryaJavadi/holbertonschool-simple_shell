@@ -130,6 +130,10 @@ void execute(char **argv, int *status)
 		wait(NULL);
 		free(command);
 	}
+	if (strcmp(command, "exit") == 0)
+	{
+		exit(0);
+	}
 }
 
 /**
