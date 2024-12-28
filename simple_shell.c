@@ -133,15 +133,6 @@ void execute(char **argv, int *status)
 }
 
 /**
- *@environ: env
- */
-void _exit_func(char **environ)
-{
-        (void)environ;
-        exit(98);
-}
-
-/**
  * main - the main function
  *
  * Return: exit status
