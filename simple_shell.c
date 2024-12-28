@@ -132,6 +132,7 @@ void execute(char **argv, int *status)
 	}
 	if (strcmp(command, "exit") == 0)
 	{
+		printf("Exiting shell...\n");
 		exit(0);
 	}
 }
