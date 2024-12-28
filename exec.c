@@ -1,19 +1,24 @@
 #include "main.h"
 /**
- * _exec - execve implementation for Simple Shell.
- * @command: Command to execute.
- * @cmd: Command to execute.
- * @env: Command to execute.
+ * execute - function with two arguments
+ * @fullPath: full directory with cmd
+ * @command: cmd input
  *
- * Return: Always 0.
+ * Description: execute command
+ * Return: status
  */
-int _exec(char *command, char **cmd, char **env)
+int execute(char *fullPath, char **command)
 {
+	pid_t child;
+	int status = 0;
 
-	/* (void)cmd; */
-	if (execve(command, cmd, env) == -1)
+	child = fork();
+	if (child == 0)
 	{
-		perror("Error:");
+		status = execve(fullPath, command, NULL);
+		exit(status);
 	}
-	return (0);
+	else
+		wait(NULL);
+	return (status);
 }
