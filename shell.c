@@ -6,7 +6,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <errno.h>
-#include "main.h"
+#include "shell.h"
 
 
 /**
